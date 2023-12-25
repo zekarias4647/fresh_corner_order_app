@@ -346,13 +346,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
  }
 }
 class Order {
- final List<CartItem> items;
- final String branch;
- final DateTime pickupTime;
+ String branch;
+ DateTime pickupTime;
+ List<CartItem> items;
 
- Order({
-  required this.items,
-  required this.branch,
-  required this.pickupTime,
- });
+ Order({required this.branch, required this.pickupTime, required this.items});
+
+ double calculateTotalPrice() {
+  return items.fold(0.0, (sum, item) => sum + item.totalPrice());
+ }
+
+ int calculatePointsEarned() {
+  // Implement your logic to calculate points based on total price or other criteria
+  // For now, let's return a fixed value for demonstration purposes
+  return 10;
+ }
 }

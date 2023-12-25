@@ -88,7 +88,7 @@ class _ProductScreenState extends State<ProductScreen> {
             icon: Icon(Icons.shopping_cart,color: Colors.white,),
             onPressed: () {
               // Navigate to the cart screen
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen())); 
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
             },
           ),
         ],

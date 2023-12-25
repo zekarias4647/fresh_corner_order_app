@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:freshcornersample/screen/history/history.dart';
+import 'package:freshcornersample/screen/order/OrderScreen.dart';
 
 import 'package:glassmorphism/glassmorphism.dart';
 
@@ -8,7 +10,6 @@ import '../Products/category.dart';
 import '../Products/products.dart';
 import '../Scan & Pick/Scan_&_Pick.dart';
 import '../carts/Carts.dart';
-import '../orders/Orders.dart';
 import '../profile/profile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,9 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeScreenContent(),
     ProductScreen(categoryName: '', initialProductPrice: 12, productName: '', productImage: '', Kilogram: 12,),
     CartScreen(),
-    Orders(),
     ProfileScreen(),
-    QRScanScreen(),
   ];
 
 
@@ -49,9 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Icon(Icons.home, size: 30,color: Colors.white,),
         Icon(Icons.explore, size: 30,color: Colors.white,),
         Icon(Icons.shopping_cart, size: 30,color: Colors.white,),
-        Icon(Icons.request_quote_outlined, size: 30,color: Colors.white,),
         Icon(Icons.person, size: 30,color: Colors.white,),
-        Icon(Icons.qr_code_scanner, size: 30,color: Colors.white,),
       ],
       color: Color(0xFF4CAF50),
       buttonBackgroundColor: Color(0xFF4CAF50),
@@ -81,9 +78,27 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
         title: Text('Home',style: TextStyle(color: Colors.white),),
         centerTitle: true,
         backgroundColor: Colors.green,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.history,color: Colors.white,size: 25,),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => OrderHistoryScreen(orders: [],))); // Handle search action
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.qr_code_scanner,color: Colors.white,size: 25,),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => QRScanScreen())); // Handle search action
+            },
+          ),
+
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
